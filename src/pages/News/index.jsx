@@ -3,14 +3,15 @@ import ArticleDetail from '../../components/ArticleDetail'
 import ContentCard from '../../components/ContentCard'
 import EmptyState from '../../components/EmptyState'
 import PageHero from '../../components/PageHero'
-import { newsItems } from '../../content/news'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 import NotFound from '../NotFound'
+import { useCms } from '../../cms/context'
 
 const PAGE_TITLE = 'Haberler'
 const PAGE_INTRO = 'Dernek çalışmalarımız ve duyurularımız.'
 
 function NewsList() {
+  const { newsItems } = useCms()
   useDocumentMeta(PAGE_TITLE, PAGE_INTRO)
 
   return (
@@ -41,6 +42,7 @@ function NewsList() {
 }
 
 function News() {
+  const { newsItems } = useCms()
   const { slug } = useParams()
   if (!slug) return <NewsList />
 

@@ -3,15 +3,20 @@ import Eyebrow from '../../components/Eyebrow'
 import { CheckField, ChoiceField, FormField, SubmitForm } from '../../components/Form'
 import PageHero from '../../components/PageHero'
 import SplitTitle from '../../components/SplitTitle'
-import { siteSettings } from '../../content/siteSettings'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
+import { useCms } from '../../cms/context'
+import { submitForm } from '../../cms/forms'
 
 const CONGRESS_MEMBER_OPTIONS = [
   ['yes', 'Evet'],
   ['no', 'Hayır'],
 ]
 
+// Panel formundaki seçenek değerleri
+const CONGRESS_VALUES = { yes: 'evet', no: 'hayir' }
+
 function Membership() {
+  const { siteSettings } = useCms()
   useDocumentMeta('Üyelik')
 
   return (
@@ -25,6 +30,7 @@ function Membership() {
             submitLabel="Başvuruyu Gönder"
             successTitle="Başvurunuz alındı"
             successText="Teşekkür ederiz. Yönetim kurulumuz başvurunuzu inceleyip sizinle iletişime geçecek."
+            onSubmit={(values) => submitForm('uyelik', values, (key, value) => (key === 'congress_member' ? CONGRESS_VALUES[value] ?? value : value))}
           >
             <div className="form_row">
               <FormField label="Ad Soyad" name="full_name" isRequired autoComplete="name" />

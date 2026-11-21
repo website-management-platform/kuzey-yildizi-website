@@ -2,10 +2,10 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import { Phone } from 'lucide-react'
 import LogoLoader from '../../components/LogoLoader'
-import { siteSettings } from '../../content/siteSettings'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './site_layout.css'
+import { useCms } from '../../cms/context'
 
 function scrollToTopInstantly() {
   const root = document.documentElement
@@ -16,6 +16,7 @@ function scrollToTopInstantly() {
 }
 
 function SiteLayout() {
+  const { siteSettings } = useCms()
   const { pathname } = useLocation()
   const [routeChangeCount, setRouteChangeCount] = useState(0)
   const [previousPathname, setPreviousPathname] = useState(pathname)

@@ -1,15 +1,16 @@
 import { useParams } from 'react-router'
 import ArticleDetail from '../../components/ArticleDetail'
 import PageHero from '../../components/PageHero'
-import { eventItems } from '../../content/events'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 import NotFound from '../NotFound'
 import EventCalendar from './components/EventCalendar'
+import { useCms } from '../../cms/context'
 
 const PAGE_TITLE = 'Etkinlikler'
 const PAGE_INTRO = 'Üyelerimizi ve Trabzonspor sevdalılarını bir araya getiren etkinliklerimiz.'
 
 function EventList() {
+  const { eventItems } = useCms()
   useDocumentMeta(PAGE_TITLE, PAGE_INTRO)
 
   return (
@@ -21,6 +22,7 @@ function EventList() {
 }
 
 function Events() {
+  const { eventItems } = useCms()
   const { slug } = useParams()
   if (!slug) return <EventList />
 

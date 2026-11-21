@@ -3,11 +3,11 @@ import PageHero from '../../components/PageHero'
 import Prose from '../../components/Prose'
 import Reveal from '../../components/Reveal'
 import ZoomableImage from '../../components/ZoomableImage'
-import { associationPages } from '../../content/associationPages'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 import NotFound from '../NotFound'
 import OrgChart from './components/OrgChart'
 import './association_page.css'
+import { useCms } from '../../cms/context'
 
 function groupMembersBySection(members) {
   const groups = []
@@ -24,6 +24,7 @@ function groupMembersBySection(members) {
 }
 
 function AssociationPage() {
+  const { associationPages } = useCms()
   const { slug } = useParams()
   const page = associationPages.find((item) => item.slug === slug)
   useDocumentMeta(page?.title, page?.body?.slice(0, 200) || undefined)

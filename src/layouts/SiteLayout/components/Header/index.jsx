@@ -1,13 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { ChevronDown, Menu, X } from 'lucide-react'
-import { associationMenu } from '../../../../content/siteSettings'
 import { primaryLinks, secondaryLinks, homeLink } from '../../navigationLinks'
-
-const topLevelPages = associationMenu
-  .filter((item) => item.isTopLevel)
-  .map((item) => ({ to: `/dernegimiz/${item.slug}`, label: item.title, isExtra: true }))
-const dropdownPages = associationMenu.filter((item) => !item.isTopLevel)
+import { useCms } from '../../../../cms/context'
 
 function NavItem({ link }) {
   return (
@@ -23,6 +18,11 @@ function NavItem({ link }) {
 }
 
 function Header() {
+  const { associationMenu } = useCms()
+  const topLevelPages = associationMenu
+    .filter((item) => item.isTopLevel)
+    .map((item) => ({ to: `/dernegimiz/${item.slug}`, label: item.title, isExtra: true }))
+  const dropdownPages = associationMenu.filter((item) => !item.isTopLevel)
   const { pathname } = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)

@@ -5,15 +5,16 @@ import EmptyState from '../../components/EmptyState'
 import ImagePlaceholder from '../../components/ImagePlaceholder'
 import Lightbox from '../../components/Lightbox'
 import PageHero from '../../components/PageHero'
-import { galleryAlbums } from '../../content/galleryAlbums'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 import { toSmallImage } from '../../utils/imageVariant'
 import NotFound from '../NotFound'
 import './gallery.css'
+import { useCms } from '../../cms/context'
 
 const SWIPE_THRESHOLD_PX = 50
 
 function AlbumList() {
+  const { galleryAlbums } = useCms()
   useDocumentMeta('Galeri', 'Dernek etkinliklerimizden ve tribün anlarımızdan fotoğraf albümleri.')
 
   return (
@@ -129,6 +130,7 @@ function AlbumDetail({ album }) {
 }
 
 function Gallery() {
+  const { galleryAlbums } = useCms()
   const { slug } = useParams()
   if (!slug) return <AlbumList />
 

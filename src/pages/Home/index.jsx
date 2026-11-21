@@ -6,19 +6,16 @@ import Eyebrow from '../../components/Eyebrow'
 import Reveal from '../../components/Reveal'
 import SplitTitle from '../../components/SplitTitle'
 import ZoomableImage from '../../components/ZoomableImage'
-import { eventItems } from '../../content/events'
-import { heroSlides, homeGalleryHighlights } from '../../content/homeContent'
-import { newsItems } from '../../content/news'
-import { siteSettings } from '../../content/siteSettings'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 import { parseDate } from '../../utils/formatDate'
 import { toSmallImage } from '../../utils/imageVariant'
 import HeroSlider from './components/HeroSlider'
 import './home.css'
+import { useCms } from '../../cms/context'
 
 const HOME_LIST_LIMIT = 3
 
-function getUpcomingEvents() {
+function getUpcomingEvents(eventItems) {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   return eventItems
@@ -29,11 +26,11 @@ function getUpcomingEvents() {
     .map(({ event }) => event)
 }
 
-const latestNews = [...newsItems].sort((a, b) => (parseDate(b.publishedAt) ?? 0) - (parseDate(a.publishedAt) ?? 0)).slice(0, HOME_LIST_LIMIT)
-
 function Home() {
+  const { siteSettings, heroSlides, homeGalleryHighlights, newsItems, eventItems } = useCms()
+  const latestNews = [...newsItems].sort((a, b) => (parseDate(b.publishedAt) ?? 0) - (parseDate(a.publishedAt) ?? 0)).slice(0, HOME_LIST_LIMIT)
   useDocumentMeta()
-  const upcomingEvents = getUpcomingEvents()
+  const upcomingEvents = getUpcomingEvents(eventItems)
 
   return (
     <>

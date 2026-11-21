@@ -1,19 +1,18 @@
 import { Link } from 'react-router'
-import { associationMenu, siteSettings } from '../../../../content/siteSettings'
 import { homeLink, primaryLinks, secondaryLinks } from '../../navigationLinks'
 import InstallButton from '../InstallButton'
 import SocialIcon from '../SocialIcon'
-
-const SOCIAL_LINKS = [
-  { key: 'instagram', href: siteSettings.instagram, label: 'Instagram' },
-  { key: 'facebook', href: siteSettings.facebook, label: 'Facebook' },
-  { key: 'x', href: siteSettings.xTwitter, label: 'X' },
-  { key: 'youtube', href: siteSettings.youtube, label: 'YouTube' },
-].filter((item) => item.href)
-
-const phoneHref = `tel:${siteSettings.phone.replace(/\s/g, '')}`
+import { useCms } from '../../../../cms/context'
 
 function Footer() {
+  const { siteSettings, associationMenu } = useCms()
+  const phoneHref = `tel:${siteSettings.phone.replace(/\s/g, '')}`
+  const SOCIAL_LINKS = [
+    { key: 'instagram', href: siteSettings.instagram, label: 'Instagram' },
+    { key: 'facebook', href: siteSettings.facebook, label: 'Facebook' },
+    { key: 'x', href: siteSettings.xTwitter, label: 'X' },
+    { key: 'youtube', href: siteSettings.youtube, label: 'YouTube' },
+  ].filter((item) => item.href)
   const { phone, email, address } = siteSettings
 
   return (

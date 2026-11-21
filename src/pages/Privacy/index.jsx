@@ -1,9 +1,10 @@
 import PageHero from '../../components/PageHero'
 import Prose from '../../components/Prose'
-import { siteSettings } from '../../content/siteSettings'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
+import { useCms } from '../../cms/context'
 
 function Privacy() {
+  const { siteSettings } = useCms()
   useDocumentMeta('Aydınlatma Metni', 'Kişisel verilerin korunması kanunu kapsamında aydınlatma metni.')
 
   return (
