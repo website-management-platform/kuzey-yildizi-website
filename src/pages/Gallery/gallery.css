@@ -1,0 +1,128 @@
+.masonry {
+  columns: 3;
+  column-gap: 18px;
+}
+
+.masonry_item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  margin-bottom: 18px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  break-inside: avoid;
+}
+
+.masonry_item img {
+  width: 100%;
+  transition: transform .4s;
+}
+
+.masonry_item:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width:960px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (max-width:600px) {
+  .masonry {
+    columns: 1;
+  }
+}
+
+.album_grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+}
+
+.album_card {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 14px #3d0a1c12;
+  transition: transform .25s,box-shadow .25s;
+}
+
+.album_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px #3d0a1c26;
+}
+
+.album_cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--tint);
+}
+
+.album_cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.album_card:hover .album_cover img {
+  transform: scale(1.05);
+}
+
+.album_count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #1e060eb8;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.album_info {
+  padding: 16px 18px 18px;
+  border-top: 3px solid var(--maroon);
+}
+
+.album_info h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--maroon);
+}
+
+.album_info p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .92rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width:900px) {
+  .album_grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width:520px) {
+  .album_grid {
+    grid-template-columns: 1fr;
+  }
+}

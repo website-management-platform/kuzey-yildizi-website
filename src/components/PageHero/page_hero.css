@@ -1,0 +1,18 @@
+.page_hero {
+  background: linear-gradient(105deg,#2a0714eb,#6b1230c7),url(/images/common/dark_texture.webp) center / cover;
+  color: #fff;
+  padding: 70px 0 64px;
+}
+
+.page_hero h1 {
+  color: #fff;
+  font-size: clamp(2.2rem,5vw,3.4rem);
+  font-weight: 800;
+}
+
+.page_hero p {
+  margin: 14px 0 0;
+  max-width: 620px;
+  color: #ffffffe0;
+  font-size: 1.08rem;
+}

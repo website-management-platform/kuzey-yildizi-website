@@ -1,0 +1,27 @@
+.prose p {
+  font-size: 1.05rem;
+  color: #3b3237;
+}
+
+.prose h2 {
+  font-size: 1.35rem;
+  margin: 1.8em 0 .5em;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose ul {
+  padding-left: 1.3em;
+  margin: 0 0 1em;
+  color: #3b3237;
+}
+
+.prose li {
+  margin: .35em 0;
+}
+
+.prose p {
+  white-space: pre-line;
+}

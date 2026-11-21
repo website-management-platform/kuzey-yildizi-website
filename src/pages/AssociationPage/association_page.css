@@ -1,0 +1,8 @@
+.team_group+.team_group {
+  margin-top: 48px;
+}
+
+.team_title {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
